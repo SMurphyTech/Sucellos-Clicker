@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  This button has been clicked <span id="count">{{clicked}}</span> times.
+  {% csrf_token %}
+  <button id="like">Click</button>
+  <button id="dislike">Unclick</button>
+
+<script>
+  const upbutt = document.querySelector("#like");
+  upbutt.addEventListener('click', increaseCount);
+
+  const downbutt = document.querySelector("#dislike");
+  downbutt.addEventListener('click', decreaseCount);
+
+  function increaseCount(direction){
+    let token = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    let endpoint = "{% url 'increase' %}"
+    fetch(endpoint, {headers: {"X-CSRFToken" : token}, method : "POST"})
+      .then(response => {
+        if(!response.ok){
+          throw new Error("Network Error...");
+        }
+        console.log("returned");
+        return response.json();
+      })
+      .then(data => updateUI(data))
+      .catch(error => console.log(error));
+
+  }
+
+  function decreaseCount(direction){
+    let token = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    let endpoint = "{% url 'decrease' %}"
+    fetch(endpoint, {headers: {"X-CSRFToken" : token}, method : "POST"})
+      .then(response => {
+        if(!response.ok){
+          throw new Error("Network Error...");
+        }
+        console.log("returned");
+        return response.json();
+      })
+      .then(data => updateUI(data))
+      .catch(error => console.log(error));
+
+  }
+
+  function updateCount(direction){
+    let token = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    let endpoint = "{% url 'update' %}"
+    fetch(endpoint, {headers: {"X-CSRFToken" : token}, method : "POST"})
+      .then(response => {
+        if(!response.ok){
+          throw new Error("Network Error...");
+        }
+        console.log("returned");
+        return response.json();
+      })
+      .then(data => updateUI(data))
+      .catch(error => console.log(error));
+
+  }
+
+  function updateUI(data){
+    let count = document.querySelector("#count");
+    console.log(data.count)
+    count.innerHTML = data.clicked 
+  }
+
+  window.setInterval(updateCount, 5000)
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&family=Syne&display=swap');
+
+/* Sticky Footer Grid */
+html{
+  height:100%;
+}
+
+body{
+  text-align:center;
+  margin:0;
+  min-height:100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header, main, footer{
+  padding:20px;
+}
+
+h1 {
+  color:aquamarine;
+  margin: 10px 0 5px 0;
+}
+
+nav{
+  margin: 30px 0 0 0;
+}
+
+/* Block */
+.panel{
+  width: 100%;
+  border: 8px solid #B0C4DE;
+  text-align: center;
+  transition:all 0.3s ease;
+}
+
+/* Element */
+.panel__title{
+  color: #280d69;
+  font-family: 'Sora', sans-serif;
+  text-shadow: 2px 2px #00FA9A, 4px 4px #00CED1;
+}
+
+.panel__content{
+  color: #7de8e3;
+  font-family: 'Syne', sans-serif;
+}
+
+.panel--urgent{
+ background-color: #DC143C;
+ border: 8px solid #FF1493;
+ position: relative;
+}
+
+.panel--urgent::before{
+  content:"";
+  z-index:-2;
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: #280d69;
+  width: 100%;
+  height: 100%;
+  transition:all 0.3s ease;
+  border: 8px solid #280d69;
+}
+
+.panel--urgent:hover::before{
+  transform: translate(20px, 20px);
+}
+
+.panel__wrapper{
+  transition:all 0.3s ease;
+  margin: 30px auto;
+  width: 50%;
+}
+
+.panel__wrapper:hover{
+  transform: translate(-10px, -10px);
+}
