@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "jwadiofiqw52394q0e8fhqwufiqw4f
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = [
-    "sucellos-clicker.herokuapp.com/",
+    "sucellos-clicker.herokuapp.com",
     "127.0.0.1"
 ]
 
