@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 #creates a base directory for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 # X_FRAME_OPTIONS = '*'
 
 X_FRAME_OPTIONS = 'DENY'
