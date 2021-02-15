@@ -26,7 +26,6 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "jwadiofiqw52394q0e8fhqwufiqw4f
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = [
-    "*",
     "sucellos-clicker.herokuapp.com",
     "127.0.0.1"
 ]
@@ -46,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,7 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ALLOWED_HOSTS = ['*']
 # X_FRAME_OPTIONS = '*'
-'''
+
 X_FRAME_OPTIONS = 'DENY'
 
 SECURE_HSTS_SECONDS=518400 # 6 days
@@ -151,4 +150,3 @@ DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-'''
